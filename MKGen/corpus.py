@@ -1,3 +1,7 @@
+import random
+import numpy as np
+
+
 def create_corpus(sent, current_next):
     """
     :param (list) sent:
@@ -40,5 +44,20 @@ def create_corpus(sent, current_next):
                 current_next[this_word][next_word] += 1
 
     return current_next
+
+
+class Dictogram(dict):
+
+    def random_word(self):
+        """適当なキーを一つ返す"""
+        return random.sample(self.keys(), 1)[0]
+
+    def weighted_random_word(self):
+        """重みに基づいてランダムなキーを一つ返す"""
+        keys = [key for key in self.keys()]
+        values = [value for value in self.values()]
+        weight = [round(v/sum(values), 2) for v in values]
+
+        return np.random.choice(keys, p=weight)
 
 
