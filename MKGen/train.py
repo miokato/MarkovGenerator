@@ -2,10 +2,10 @@ import pickle
 import sys
 import os
 
-from utils import load_message, Parser
-from corpus import create_corpus
+from MKGen.utils import load_message, Parser
+from MKGen.corpus import create_corpus
 
-import settings
+from MKGen import settings
 
 
 def train():

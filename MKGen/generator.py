@@ -2,7 +2,7 @@ import numpy as np
 import pickle
 import sys
 import os
-import settings
+from MKGen import settings
 
 
 def generate(word, model, num_of_words=30):

@@ -1,7 +1,6 @@
 import os
 
-import settings
-
+from MKGen import settings
 
 path = os.path.join(settings.DATA_DIR, 'meidai.txt')
 with open(path, 'rt') as f:
