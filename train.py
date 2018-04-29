@@ -1,21 +1,31 @@
 import pickle
+import sys
+import os
 
 from utils import load_message, Parser
 from corpus import create_corpus
 
+import settings
+
 
 def train():
-    output = 'models/sample_model.pkl'
+    path_name = sys.argv[1]
+    input_file = path_name + '.txt'
+    output_file = path_name + '.pkl'
+    input_path = os.path.join(settings.DATA_DIR, input_file)
+    output_path = os.path.join(settings.MODEL_DIR, output_file)
+
     parser = Parser()
-    path = 'data/freeza.txt'
-    lines = load_message(path)
+    lines = load_message(input_path)
     model = {}
 
     for line in lines:
         line = parser.clean(line)
         words = parser.parse(line)
         model.update(create_corpus(words, model))
-    with open(output, 'wb') as f:
+    with open(output_path, 'wb') as f:
         pickle.dump(model, f)
 
 
+if __name__ == '__main__':
+    train()

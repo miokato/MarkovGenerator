@@ -1,5 +1,8 @@
 import numpy as np
 import pickle
+import sys
+import os
+import settings
 
 
 def generate(word, dic, num_of_words=30):
@@ -30,9 +33,12 @@ def generate(word, dic, num_of_words=30):
     return result
 
 
-def main():
-    path = 'models/sample_model.pkl'
-    with open(path, 'rb') as f:
+if __name__ == '__main__':
+    name = sys.argv[1]
+    word = sys.argv[2]
+    file = name + '.pkl'
+    input_path = os.path.join(settings.MODEL_DIR, file)
+    with open(input_path, 'rb') as f:
         model = pickle.load(f)
-    sentence = generate('私', model)
+    sentence = generate(word, model)
     print(sentence)
