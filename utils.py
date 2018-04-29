@@ -5,7 +5,7 @@ import MeCab
 def load_message(path):
     with open(path, 'rt') as f:
         lines = f.readlines()
-    lines = [line for line in lines if line != '\n']
+    lines = [line for line in lines if len(line) > 5]
     return lines
 
 

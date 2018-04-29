@@ -9,7 +9,10 @@ import settings
 
 
 def train():
-    path_name = sys.argv[1]
+    try:
+        path_name = sys.argv[1]
+    except IndexError:
+        path_name = 'freeza'
     input_file = path_name + '.txt'
     output_file = path_name + '.pkl'
     input_path = os.path.join(settings.DATA_DIR, input_file)

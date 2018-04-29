@@ -5,22 +5,24 @@ import os
 import settings
 
 
-def generate(word, dic, num_of_words=30):
+def generate(word, model, num_of_words=30):
     """
     :param (str) word:
-    :param (dict) dic:
+    :param (dict) model:
     :param (int) num_of_words:
     :return (str) result:
     """
-    if word not in dic.keys():
-        all_words = list(dic.keys())
-        next_word = np.random.choice(all_words)
+    if word not in model.keys():
+        start_words = list(model['START'].keys())
+        next_word = np.random.choice(start_words)
     else:
         next_word = word
     sent = []
     sent.append(next_word)
     for i in range(num_of_words):
-        word_probas = dic[next_word]
+        if next_word == 'END':
+            break
+        word_probas = model[next_word]
         next_words, weight = [], []
         for w, wt in word_probas.items():
             next_words.append(w)
@@ -30,12 +32,17 @@ def generate(word, dic, num_of_words=30):
         sent.append(expected)
         next_word = expected
     result = ''.join(sent)
+    result = result.rstrip('END')
     return result
 
 
 if __name__ == '__main__':
-    name = sys.argv[1]
-    word = sys.argv[2]
+    try:
+        name = sys.argv[1]
+        word = sys.argv[2]
+    except IndexError:
+        name = 'freeza'
+        word = '猫'
     file = name + '.pkl'
     input_path = os.path.join(settings.MODEL_DIR, file)
     with open(input_path, 'rb') as f:
