@@ -12,7 +12,7 @@ def train():
     try:
         path_name = sys.argv[1]
     except IndexError:
-        path_name = 'freeza'
+        path_name = 'clean_meidai'
     input_file = path_name + '.txt'
     output_file = path_name + '.pkl'
     input_path = os.path.join(settings.DATA_DIR, input_file)

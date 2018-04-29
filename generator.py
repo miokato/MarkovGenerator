@@ -41,11 +41,11 @@ if __name__ == '__main__':
         name = sys.argv[1]
         word = sys.argv[2]
     except IndexError:
-        name = 'freeza'
-        word = '猫'
+        name = 'clean_meidai'
+        word = '遊び'
     file = name + '.pkl'
     input_path = os.path.join(settings.MODEL_DIR, file)
     with open(input_path, 'rb') as f:
         model = pickle.load(f)
-    sentence = generate(word, model)
+    sentence = generate(word, model, num_of_words=140)
     print(sentence)
