@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='MarkovGenerator',
-    version='0.0.1',
+    version='0.0.2',
     description='Text generator using the Markov model',
     author='Mio Kato',
     author_email='miokato07@gmail.com',
