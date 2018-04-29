@@ -13,7 +13,7 @@ def create_corpus(sent, current_next):
             next_word = sent[i + 1]
 
             if 'START' not in current_next.keys():
-                current_next['START'] = {}
+                current_next['START'] = Dictogram()
 
             if next_word not in current_next['START'].keys():
                 current_next['START'][next_word] = 1
@@ -24,7 +24,7 @@ def create_corpus(sent, current_next):
             this_word = sent[i]
 
             if this_word not in current_next.keys():
-                current_next[this_word] = {}
+                current_next[this_word] = Dictogram()
 
             if 'END' not in current_next[this_word].keys():
                 current_next[this_word]['END'] = 1
@@ -36,7 +36,7 @@ def create_corpus(sent, current_next):
             next_word = sent[i + 1]
 
             if this_word not in current_next.keys():
-                current_next[this_word] = {}
+                current_next[this_word] = Dictogram()
 
             if next_word not in current_next[this_word].keys():
                 current_next[this_word][next_word] = 1
@@ -56,7 +56,7 @@ class Dictogram(dict):
         """重みに基づいてランダムなキーを一つ返す"""
         keys = [key for key in self.keys()]
         values = [value for value in self.values()]
-        weight = [round(v/sum(values), 2) for v in values]
+        weight = [v/sum(values) for v in values]
 
         return np.random.choice(keys, p=weight)
 

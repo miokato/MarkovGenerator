@@ -22,13 +22,7 @@ def generate(word, model, num_of_words=30):
     for i in range(num_of_words):
         if next_word == 'END':
             break
-        word_probas = model[next_word]
-        next_words, weight = [], []
-        for w, wt in word_probas.items():
-            next_words.append(w)
-            weight.append(wt)
-        weight = [w/sum(weight) for w in weight]
-        expected = np.random.choice(next_words, p=weight)
+        expected = model[next_word].weighted_random_word()
         sent.append(expected)
         next_word = expected
     result = ''.join(sent)
