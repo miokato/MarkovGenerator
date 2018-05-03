@@ -2,15 +2,23 @@ Simple text generator using 1 Markov process.
 
 ## Install
 ```
-$ brew install mecab mecab-ipadic
-$ pip install -r requirements.txt
-$ python setup.py install
+$ make all
 ```
+
+## Dependency
+- mecab
+- mecab-ipadic
+- mecab-python3
+- numpy
+- mecab-ipadic-neologd
 
 
 ## Getting started
 
 ```
+$ mkdir data
+# Creating txt file
+$ touch data/asuka.txt
 $ make train name=asuka
 $ python
 
