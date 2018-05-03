@@ -1,6 +1,6 @@
 .PHONY: train
 train:
-	python main.py ${name}
+	python train.py ${name}
 	@echo 'Done! created ${name}.pkl'
 
 

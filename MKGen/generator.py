@@ -1,8 +1,4 @@
 import numpy as np
-import pickle
-import sys
-import os
-from MKGen import settings
 
 
 def generate(word, model, num_of_words=30):
@@ -28,18 +24,3 @@ def generate(word, model, num_of_words=30):
     result = ''.join(sent)
     result = result.rstrip('END')
     return result
-
-
-if __name__ == '__main__':
-    try:
-        name = sys.argv[1]
-        word = sys.argv[2]
-    except IndexError:
-        name = 'asuka'
-        word = '遊び'
-    file = name + '.pkl'
-    input_path = os.path.join(settings.MODEL_DIR, file)
-    with open(input_path, 'rb') as f:
-        model = pickle.load(f)
-    sentence = generate(word, model, num_of_words=140)
-    print(sentence)

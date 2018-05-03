@@ -5,7 +5,7 @@ import os
 from MKGen.utils import load_message, Parser
 from MKGen.corpus import create_corpus
 
-from MKGen import settings
+import settings
 
 
 def train():
