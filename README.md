@@ -2,7 +2,9 @@ Simple text generator using 1 Markov process.
 
 ## Install
 ```
-python setup.py install
+$ brew install mecab mecab-ipadic
+$ pip install -r requirements.txt
+$ python setup.py install
 ```
 
 
