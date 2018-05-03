@@ -2,7 +2,7 @@ from distutils.core import setup
 
 
 setup(
-    name='MarkovGenerator',
+    name='MKGen',
     version='0.0.6',
     description='Text generator using the Markov model',
     author='Mio Kato',

@@ -35,7 +35,7 @@ if __name__ == '__main__':
         name = sys.argv[1]
         word = sys.argv[2]
     except IndexError:
-        name = 'clean_meidai'
+        name = 'asuka'
         word = '遊び'
     file = name + '.pkl'
     input_path = os.path.join(settings.MODEL_DIR, file)
